@@ -1,0 +1,55 @@
+1. So sánh con biến con trỏ và biến thường, trình bày chi tiết các thành phần của biến con trỏ và biến thường
+-Biến thường:+ địa chỉ
+	     + giá trị
++ Địa chỉ: là nơi sinh ra
++ Giá trị: là nơi lưu trữ giá trị của biến sau khi khỏi tạo
+-Biến con trỏ:  + địa chỉ: nơi sinh ra
+		+ miền giá trị: Lưu địa chỉ của nơi nó trỏ đến
+		+ giá trị: Giá trị của nơi trỏ đến
+==================================================
+2. Ta có int a = 5; địa chỉ của a là BAX03
+trình bày luồng chương trình khi gặp lệnh: int *b = &a; 
+lệnh: cout<<b<<endl;        // b= BAX03
+lệnh: cout<<*b<<endl;       // b=5
+lệnh: float *c = a;	    // bị lỗi vì con trỏ có kdl float chỉ có thể trỏ đến những biến float, a có kdl int. 
+lệnh: a = 15; //trình bày các sự thay đổi liên quan  // thì b=15
+====================================================
+3. trình bày tính chất của biến thường và biến con trỏ trong phạm vi trỏ
++ Tại 1 thời điểm, 1 con trỏ chỉ được trỏ đến 1 nơi
++ Tại 1 thời điểm, 1 biến có thể được nhiều con trỏ trỏ đến
+====================================================
+4. Lợi ích của con trỏ ?
++ Tiết kiệm vùng nhớ
++ DSLK, mảng động, stack, queue
+====================================================
+5. kích thước con trỏ là bao nhiêu ? trình bày chi tiết ?
+kích thước của con trỏ là 4 byte cho mọi kdl: char, int, float, bool, string
+====================================================
+6. trình bày cú pháp của hàm trả về một con trỏ
+<kdl nơi trỏ đên>*<tên biến>;
+================================================
+1. C: các hàm cấp phát nằm ở thư viện nào ?
+thư viện stdlib.h
+================================================
+2. C: nguyên mẫu hàm của các hàm cấp phát
+-malloc
+void *malloc(int size);
+-calloc
+void*calloc(int count, int size)
+-realloc
+void *realloc( void *p,int size)
+=================================================
+3. C: ứng dụng: lời gọi hàm
+-malloc
+int *p = (int *)malloc(sizeof(int))
+-calloc
+int *p= (int *)calloc(sizeof(int))
+-realloc
+int *p =(int *)realloc(p,sizeof(int))
+=================================================
+4: C: cơ chế hoạt động của từng hàm ?
+-malloc: cấp phát vùng nhớ có kích thước size byte
+-calloc: cấp phát count vùng nhớ, mỗi vùng nhớ có size byte, mặc định giá trị = 0
+-realloc: có 2 cơ chế
++ Nếu p=NULL cấp phát vùng nhớ mới
++ Nếu p!=NULL thì dựa vào size để nới rộng hoặc thu hẹp 
